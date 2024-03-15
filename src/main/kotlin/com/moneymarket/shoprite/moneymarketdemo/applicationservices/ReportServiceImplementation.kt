@@ -1,16 +1,13 @@
 package com.moneymarket.shoprite.moneymarketdemo.applicationservices
 
-import com.moneymarket.shoprite.moneymarketdemo.domainentities.enums.TransactionType
-import com.moneymarket.shoprite.moneymarketdemo.domainentities.models.Transaction
-import com.moneymarket.shoprite.moneymarketdemo.domainservices.Dto.TransactionDto
-import com.moneymarket.shoprite.moneymarketdemo.domainservices.TransactionMapper
+import com.moneymarket.shoprite.moneymarketdemo.domainservices.dto.TransactionDto
+import com.moneymarket.shoprite.moneymarketdemo.domainservices.mapper.TransactionMapper
 import com.moneymarket.shoprite.moneymarketdemo.domainservices.repository.TransactionRepository
 import com.moneymarket.shoprite.moneymarketdemo.domainservices.repository.UserRepository
 import com.moneymarket.shoprite.moneymarketdemo.domainservices.services.ReportService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class ReportServiceImplementation : ReportService {

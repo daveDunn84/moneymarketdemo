@@ -7,9 +7,10 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import org.hibernate.annotations.CreationTimestamp
 import java.math.BigDecimal
 import java.math.BigInteger
-import java.util.UUID
+import java.util.*
 
 @Entity
 @Table(name = "transaction", schema = "shoprite")
@@ -28,5 +29,8 @@ public class Transaction(
     val currency: String = "",
 
     @Column(name = "amount", nullable = false)
-    val amount: BigDecimal = BigDecimal(0)
+    val amount: BigDecimal = BigDecimal(0),
+
+    @CreationTimestamp
+    val createdAt: Date? = null
 )

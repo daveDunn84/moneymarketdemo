@@ -1,7 +1,4 @@
-package com.moneymarket.shoprite.moneymarketdemo.domainservices.Dto
-
-import java.math.BigDecimal
-import java.util.Date
+package com.moneymarket.shoprite.moneymarketdemo.domainservices.dto
 
 class TransactionDto (
     val TransactionDate: String,
