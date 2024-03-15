@@ -24,13 +24,20 @@ class TransactionServiceImplementation : TransactionService {
 
     override fun deposit(toAccountNumber: String, currency: String, amount: BigDecimal) {
 
-        var user = userRepository.GetUser(toAccountNumber)
+        val user = userRepository.GetUser(toAccountNumber)
+        val transaction = Transaction(UUID.randomUUID(), user, TransactionType.DEPOSIT, currency, amount)
 
-        var transaction = Transaction(UUID.randomUUID(), user, TransactionType.DEPOSIT, currency, amount)
         transactionRepository.AddTransaction(transaction)
     }
 
     override fun transfer(fromAccountNumber: String, toAccountNumber: String, currency: String, amount: BigDecimal) {
-        // todo ("Not yet implemented")
+        val fromUser = userRepository.GetUser(fromAccountNumber)
+        val toUser = userRepository.GetUser(toAccountNumber)
+
+        val outTransaction = Transaction(UUID.randomUUID(), fromUser, TransactionType.TRANSFER, currency, amount.times(BigDecimal(-1)))
+        val inTransaction = Transaction(UUID.randomUUID(), toUser, TransactionType.TRANSFER, currency, amount)
+
+        transactionRepository.AddTransaction(outTransaction)
+        transactionRepository.AddTransaction(inTransaction)
     }
 }
