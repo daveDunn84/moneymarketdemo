@@ -3,9 +3,10 @@ package com.moneymarket.shoprite.moneymarketdemo.infrastructure.database.reposit
 import com.moneymarket.shoprite.moneymarketdemo.domainentities.models.User
 import com.moneymarket.shoprite.moneymarketdemo.domainservices.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
 
-@Service
+@Repository
 class UserRepositoryJpaImplementation : UserRepository {
 
     @Autowired
@@ -16,6 +17,7 @@ class UserRepositoryJpaImplementation : UserRepository {
     }
 
     override fun GetUser(accountId: String): User {
-        return userJpaRepository.findByAccountNumber(accountId)
+        val user = userJpaRepository.findByAccountNumber(accountId)
+        return user
     }
 }
