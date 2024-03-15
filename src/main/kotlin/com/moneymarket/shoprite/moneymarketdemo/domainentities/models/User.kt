@@ -11,7 +11,7 @@ import java.util.UUID
 
 @Entity
 @Table(name = "user", schema="shoprite")
-data class User (
+public class User(
     @Id
     val id: UUID = UUID.randomUUID(),
 
