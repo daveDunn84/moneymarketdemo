@@ -4,6 +4,6 @@ import java.math.BigDecimal
 import java.util.*
 
 interface TransactionService {
-    fun deposit(userId: UUID, currency: String, amount: BigDecimal)
-    fun transfer(fromUserId: UUID, toUserId: UUID, currency: String, amount: BigDecimal)
+    fun deposit(toAccountNumber: String, currency: String, amount: BigDecimal)
+    fun transfer(fromAccountNumber: String, toAccountNumber: String, currency: String, amount: BigDecimal)
 }
