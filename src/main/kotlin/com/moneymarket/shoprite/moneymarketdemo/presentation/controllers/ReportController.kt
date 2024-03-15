@@ -16,8 +16,8 @@ class ReportController(val reportService: ReportService) {
     @GetMapping("/generate")
     fun GenerateReport(@RequestParam(required = true) accountNumber: String): ResponseEntity<ReportResponse> {
         try {
-            val data = reportService.GenerateReportTest(accountNumber)
-            return ResponseEntity(ReportResponse(null), HttpStatus.OK)
+            val data = reportService.GenerateReport(accountNumber)
+            return ResponseEntity(ReportResponse(data), HttpStatus.OK)
         } catch (e: Exception) {
             // todo: send a meaningful error from the report service
             return ResponseEntity(ReportResponse(null), HttpStatus.BAD_REQUEST)
