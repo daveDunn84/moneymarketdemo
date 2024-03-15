@@ -1,8 +1,10 @@
 package com.moneymarket.shoprite.moneymarketdemo.presentation.controllers
 
 import com.moneymarket.shoprite.moneymarketdemo.domainentities.models.AuthToken
+import com.moneymarket.shoprite.moneymarketdemo.domainentities.models.User
 import com.moneymarket.shoprite.moneymarketdemo.domainservices.services.AuthService
 import com.moneymarket.shoprite.moneymarketdemo.presentation.models.UserCredentials
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/auth")
 class AuthController(val authService: AuthService) {
+    private val logger = LoggerFactory.getLogger(javaClass)
+    // todo: return entire token as it will contain data needed in other controllers
     @PostMapping
     fun GetUserToken(@RequestBody userCredentials: UserCredentials): ResponseEntity<String> {
         val authToken = authService.AuthenticateUser(userCredentials.username, userCredentials.password)
